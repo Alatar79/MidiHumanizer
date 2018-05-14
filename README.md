@@ -11,7 +11,8 @@ www.alataraudio.com
 The Midi Humanizer is cross platform. It can be compiled for Windows and also for Mac/OSX. 
 
 # Prerequisites
-You need the JUCE framework in order to use the Midi Humanizer. JUCE is a C++ cross-platform framework for GUI and audio. Get it from here: http://www.juce.com
+You need the JUCE framework in order to compile the Midi Humanizer. JUCE is a C++ cross-platform framework for GUI and audio. Get it from here: http://www.juce.com
+Once you have downloaded the framework, you can open the "Humanizer.jucer" file and create an export for your favourite IDE. 
 
 # License
 The Midi Humanizer  is free software: you can redistribute it and/or modify
