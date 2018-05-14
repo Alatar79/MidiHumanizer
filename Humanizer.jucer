@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="OmFQa0" name="MidiHumanizer" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.Alatar.Humanizer" jucerVersion="5.3.1"
+              includeBinaryInAppConfig="1">
+  <EXPORTFORMATS>
+    <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" isDebug="1"
+                       optimisation="1" targetName="GlockenspielStandAlone" headerPath="C:\Program\Microsoft SDKs\Windows\v7.1\Include; ..\..\Source"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" isDebug="0"
+                       optimisation="2" targetName="GlockenspielStandAlone" headerPath="C:\Program\Microsoft SDKs\Windows\v7.1\Include; ..\..\Source"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_opengl" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_graphics" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_events" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_data_structures" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_cryptography" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_core" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="JuceLibraryCode/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="JuceLibraryCode/modules"/>
+      </MODULEPATHS>
+    </VS2008>
+    <XCODE_MAC targetFolder="Builds/MacOSX" bigIcon="S0L67p" smallIcon="HdhWKZ">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="MidiHumanizer"/>
+        <CONFIGURATION name="Release" isDebug="0" targetName="MidiHumanizer"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_opengl" path="../../juce"/>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_cryptography" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2015 targetFolder="Builds/VisualStudio2015" extraCompilerFlags="/FC"
+            bigIcon="S0L67p" smallIcon="HdhWKZ">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="MidiHumanizer" headerPath="C:\Program\Microsoft SDKs\Windows\v7.1\Include; ..\..\Source"
+                       useRuntimeLibDLL="0"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="MidiHumanizer" headerPath="C:\Program\Microsoft SDKs\Windows\v7.1\Include; ..\..\Source"
+                       useRuntimeLibDLL="0"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_opengl" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\..\JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2015>
+  </EXPORTFORMATS>
+  <MAINGROUP id="SXbuP1" name="MidiHumanizer">
+    <GROUP id="{D6B19A08-AC77-C386-4834-356DD985FF28}" name="Data">
+      <GROUP id="{40C466A5-4FB5-05CB-7AF9-F8C99E8564A4}" name="MidiFiles">
+        <FILE id="IUuEvx" name="Bach_Prelude_1_in_C.mid" compile="0" resource="1"
+              file="Data/MidiFiles/Bach_Prelude_1_in_C.mid" xcodeResource="1"/>
+        <FILE id="j7ioGo" name="Beethoven_Moonlight_Sonata.mid" compile="0"
+              resource="1" file="Data/MidiFiles/Beethoven_Moonlight_Sonata.mid"
+              xcodeResource="1"/>
+        <FILE id="y6qcGk" name="Mozart_Requiem_07_Lacrimosa.mid" compile="0"
+              resource="1" file="Data/MidiFiles/Mozart_Requiem_07_Lacrimosa.mid"
+              xcodeResource="1"/>
+      </GROUP>
+      <FILE id="HdhWKZ" name="AppIcon_128x128.png" compile="0" resource="1"
+            file="Data/Icons/AppIcon_128x128.png" xcodeResource="0"/>
+      <FILE id="nJU66c" name="AppIcon_256x256.png" compile="0" resource="1"
+            file="Data/Icons/AppIcon_256x256.png"/>
+      <FILE id="S0L67p" name="AppIcon_512x512_2x.png" compile="0" resource="1"
+            file="Data/Icons/AppIcon_512x512_2x.png"/>
+      <FILE id="hHPFsn" name="Help.pdf" compile="0" resource="1" file="Data/HelpFile/Help.pdf"
+            xcodeResource="1"/>
+      <FILE id="smWzYa" name="SvgIcons.zip" compile="0" resource="1" file="Data/SvgIcons.zip"/>
+    </GROUP>
+    <GROUP id="{FDAE12A4-E3D1-F5B0-1BA1-8F0BB66B8A7D}" name="Source">
+      <GROUP id="{69FA9524-53CD-B19C-4B0C-6D00E926E1C9}" name="Midi">
+        <GROUP id="{552D49EA-0A72-5B65-C850-9597EB2EAA30}" name="from_juce">
+          <FILE id="tYmvL5" name="juce_MidiMessageCollector_mod.cpp" compile="1"
+                resource="0" file="Source/Midi/from_juce/juce_MidiMessageCollector_mod.cpp"/>
+          <FILE id="omfT2b" name="juce_MidiMessageCollector_mod.h" compile="0"
+                resource="0" file="Source/Midi/from_juce/juce_MidiMessageCollector_mod.h"/>
+        </GROUP>
+        <FILE id="AJBjJ8" name="ExtendedMidiMessage.cpp" compile="1" resource="0"
+              file="Source/Midi/ExtendedMidiMessage.cpp"/>
+        <FILE id="k6nPeh" name="ExtendedMidiMessage.h" compile="0" resource="0"
+              file="Source/Midi/ExtendedMidiMessage.h"/>
+        <FILE id="RQ5kgg" name="ExtendedMidiMessageSequence.cpp" compile="1"
+              resource="0" file="Source/Midi/ExtendedMidiMessageSequence.cpp"/>
+        <FILE id="lnobft" name="ExtendedMidiMessageSequence.h" compile="0"
+              resource="0" file="Source/Midi/ExtendedMidiMessageSequence.h"/>
+        <FILE id="Am8RVG" name="MidiHelpers.cpp" compile="1" resource="0" file="Source/Midi/MidiHelpers.cpp"/>
+        <FILE id="ZEkKF5" name="MidiHelpers.h" compile="0" resource="0" file="Source/Midi/MidiHelpers.h"/>
+        <FILE id="mj70fF" name="MidiPlayer.cpp" compile="1" resource="0" file="Source/Midi/MidiPlayer.cpp"/>
+        <FILE id="mpbRfW" name="MidiPlayer.h" compile="0" resource="0" file="Source/Midi/MidiPlayer.h"/>
+        <FILE id="BpaKMB" name="MidiSequence.cpp" compile="1" resource="0"
+              file="Source/Midi/MidiSequence.cpp"/>
+        <FILE id="i2capT" name="MidiSequence.h" compile="0" resource="0" file="Source/Midi/MidiSequence.h"/>
+        <FILE id="ijwXzU" name="MidiThread.cpp" compile="1" resource="0" file="Source/Midi/MidiThread.cpp"/>
+        <FILE id="koslnW" name="MidiThread.h" compile="0" resource="0" file="Source/Midi/MidiThread.h"/>
+        <FILE id="VjKaWb" name="NoteCounter.cpp" compile="1" resource="0" file="Source/Midi/NoteCounter.cpp"/>
+        <FILE id="klKbSe" name="NoteCounter.h" compile="0" resource="0" file="Source/Midi/NoteCounter.h"/>
+        <FILE id="ohN1ua" name="Player.cpp" compile="1" resource="0" file="Source/Midi/Player.cpp"/>
+        <FILE id="PKX1s0" name="Player.h" compile="0" resource="0" file="Source/Midi/Player.h"/>
+      </GROUP>
+      <GROUP id="{3F3BFDE7-0002-0C09-18DA-72296786DCA9}" name="GUI">
+        <GROUP id="{0914BF3F-9C9B-7114-C87B-D6DB505D52BC}" name="MainTab">
+          <FILE id="ZfJaux" name="MainTab.cpp" compile="1" resource="0" file="Source/GUI/MainTab/MainTab.cpp"/>
+          <FILE id="vnFDrc" name="MainTab.h" compile="0" resource="0" file="Source/GUI/MainTab/MainTab.h"/>
+          <FILE id="OjDt0j" name="MasterTrackPanel.cpp" compile="1" resource="0"
+                file="Source/GUI/MainTab/MasterTrackPanel.cpp"/>
+          <FILE id="edYwVT" name="MasterTrackPanel.h" compile="0" resource="0"
+                file="Source/GUI/MainTab/MasterTrackPanel.h"/>
+          <FILE id="CJcZwq" name="NoteButton.cpp" compile="1" resource="0" file="Source/GUI/MainTab/NoteButton.cpp"/>
+          <FILE id="XXhDLl" name="NoteButton.h" compile="0" resource="0" file="Source/GUI/MainTab/NoteButton.h"/>
+          <FILE id="WUWVGJ" name="PianoRoll.cpp" compile="1" resource="0" file="Source/GUI/MainTab/PianoRoll.cpp"/>
+          <FILE id="tNBQWQ" name="PianoRoll.h" compile="0" resource="0" file="Source/GUI/MainTab/PianoRoll.h"/>
+          <FILE id="rPGha2" name="PianoRollZoomComponent.cpp" compile="1" resource="0"
+                file="Source/GUI/MainTab/PianoRollZoomComponent.cpp"/>
+          <FILE id="pr2LVT" name="PianoRollZoomComponent.h" compile="0" resource="0"
+                file="Source/GUI/MainTab/PianoRollZoomComponent.h"/>
+          <FILE id="ZhihnA" name="TrackListComp.cpp" compile="1" resource="0"
+                file="Source/GUI/MainTab/TrackListComp.cpp"/>
+          <FILE id="EIv1AL" name="TrackListComp.h" compile="0" resource="0" file="Source/GUI/MainTab/TrackListComp.h"/>
+          <FILE id="cpSWCp" name="TrackPanel.cpp" compile="1" resource="0" file="Source/GUI/MainTab/TrackPanel.cpp"/>
+          <FILE id="xpx2M5" name="TrackPanel.h" compile="0" resource="0" file="Source/GUI/MainTab/TrackPanel.h"/>
+        </GROUP>
+        <FILE id="aXabqk" name="AboutComponent.cpp" compile="1" resource="0"
+              file="Source/GUI/AboutComponent.cpp"/>
+        <FILE id="Quo5qz" name="AboutComponent.h" compile="0" resource="0"
+              file="Source/GUI/AboutComponent.h"/>
+        <FILE id="qKflCA" name="CIELCHColour.cpp" compile="1" resource="0"
+              file="Source/GUI/CIELCHColour.cpp"/>
+        <FILE id="JlhUUX" name="CIELCHColour.h" compile="0" resource="0" file="Source/GUI/CIELCHColour.h"/>
+        <FILE id="atgwGL" name="ExtendedGUI.cpp" compile="1" resource="0" file="Source/GUI/ExtendedGUI.cpp"/>
+        <FILE id="mhyRlq" name="ExtendedGUI.h" compile="0" resource="0" file="Source/GUI/ExtendedGUI.h"/>
+        <FILE id="Ohlrm7" name="GuiHelpers.cpp" compile="1" resource="0" file="Source/GUI/GuiHelpers.cpp"/>
+        <FILE id="LiGupW" name="GuiHelpers.h" compile="0" resource="0" file="Source/GUI/GuiHelpers.h"/>
+        <FILE id="fXc08U" name="MainComponent.cpp" compile="1" resource="0"
+              file="Source/GUI/MainComponent.cpp"/>
+        <FILE id="BoxGsr" name="MainComponent.h" compile="0" resource="0" file="Source/GUI/MainComponent.h"/>
+        <FILE id="mokZRv" name="Paths.cpp" compile="1" resource="0" file="Source/GUI/Paths.cpp"/>
+        <FILE id="GyUs2m" name="Paths.h" compile="0" resource="0" file="Source/GUI/Paths.h"/>
+        <FILE id="RNA7cS" name="PluginLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/GUI/PluginLookAndFeel.cpp"/>
+        <FILE id="Cd6rID" name="PluginLookAndFeel.h" compile="0" resource="0"
+              file="Source/GUI/PluginLookAndFeel.h"/>
+        <FILE id="ZX9vQn" name="StartUpDialog.cpp" compile="1" resource="0"
+              file="Source/GUI/StartUpDialog.cpp"/>
+        <FILE id="KqmQ0Z" name="StartUpDialog.h" compile="0" resource="0" file="Source/GUI/StartUpDialog.h"/>
+      </GROUP>
+      <FILE id="AR9wE9" name="AppData.cpp" compile="1" resource="0" file="Source/AppData.cpp"/>
+      <FILE id="mvnEUL" name="AppData.h" compile="0" resource="0" file="Source/AppData.h"/>
+      <FILE id="ehumtp" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="FcpFVQ" name="MainController.cpp" compile="1" resource="0"
+            file="Source/MainController.cpp"/>
+      <FILE id="MGbz8R" name="MainController.h" compile="0" resource="0"
+            file="Source/MainController.h"/>
+      <FILE id="QzYpHK" name="MainWindow.cpp" compile="1" resource="0" file="Source/MainWindow.cpp"/>
+      <FILE id="BM5AqK" name="MainWindow.h" compile="0" resource="0" file="Source/MainWindow.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+  <LIVE_SETTINGS>
+    <WINDOWS enableCxx11="1"/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
