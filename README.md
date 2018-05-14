@@ -1,14 +1,14 @@
 # Description
 Midi Humanizer is an interactive Midi player. You can use it to play an arbitrary Midi file, interactively. The Midi Humanizer does not automatically play the whole Midi file. Instead it lets you play the file note by note. Just connect you Midi keyboard and use it as an input device. Each time you hit a key on your keyboard, the midi file advances one step.
 
+Here is a screenshot of the application: https://github.com/Alatar79/MidiHumanizer/blob/master/MidiHumanizerScreenshot.png
+
 # Get it 
 If you do not want to compile the application yourself, you can download binaries from the Midi Humanizer homepage: 
 www.alataraudio.com
 
 # Cross Platform
 The Midi Humanizer is cross platform. It can be compiled for Windows and also for Mac/OSX. 
-
-Here is a screenshot of the application: https://github.com/Alatar79/JUCE-CIELCH/blob/master/Screenshot.png
 
 # Prerequisites
 You need the JUCE framework in order to use the Midi Humanizer. JUCE is a C++ cross-platform framework for GUI and audio. Get it from here: http://www.juce.com
