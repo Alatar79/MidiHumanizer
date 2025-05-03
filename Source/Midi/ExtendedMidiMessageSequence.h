@@ -35,7 +35,8 @@ MS<<*/
 /**
 
 Extends the MidiMessageSequence class with additional functionality, such as "is enabled for playback" and
-midi out. 
+midi out.
+Its for example used for one of the "tracks" in a MIDI file. 
 
 */
 class ExtendedMidiMessageSequence : public MidiMessageSequence

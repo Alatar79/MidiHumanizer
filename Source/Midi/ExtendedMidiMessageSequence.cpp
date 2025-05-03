@@ -217,8 +217,8 @@ void ExtendedMidiMessageSequence::enable()
 
 MidiOutput* ExtendedMidiMessageSequence::getMidiOut()
 {
-    //TODO: fixme: this is a bit dangerous, returning a raw ptr from a unique_ptr.
-    //Better would be to change this to shared_ptr?
+    //TODO: this is a bit dangerous, returning a raw ptr from a unique_ptr.
+    //It works, because the life time of this sequence should be longer than the callers lifetime. But not ideal. 
     return midiOut.get();
 }
 
