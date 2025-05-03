@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="OmFQa0" name="MidiHumanizer" projectType="guiapp" version="1.0.0"
-              bundleIdentifier="com.Alatar.Humanizer" jucerVersion="5.3.1"
-              includeBinaryInAppConfig="1">
+              bundleIdentifier="com.Alatar.Humanizer" includeBinaryInAppConfig="1"
+              jucerFormatVersion="1">
   <EXPORTFORMATS>
     <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1">
       <CONFIGURATIONS>
@@ -48,32 +48,6 @@
         <MODULEPATH id="juce_audio_basics" path="../../juce"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2015 targetFolder="Builds/VisualStudio2015" extraCompilerFlags="/FC"
-            bigIcon="S0L67p" smallIcon="HdhWKZ">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="MidiHumanizer" headerPath="C:\Program\Microsoft SDKs\Windows\v7.1\Include; ..\..\Source"
-                       useRuntimeLibDLL="0"/>
-        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="MidiHumanizer" headerPath="C:\Program\Microsoft SDKs\Windows\v7.1\Include; ..\..\Source"
-                       useRuntimeLibDLL="0"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_opengl" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_extra" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_cryptography" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_core" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="..\..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_basics" path="..\..\JUCE\modules"/>
-      </MODULEPATHS>
-    </VS2015>
   </EXPORTFORMATS>
   <MAINGROUP id="SXbuP1" name="MidiHumanizer">
     <GROUP id="{D6B19A08-AC77-C386-4834-356DD985FF28}" name="Data">
