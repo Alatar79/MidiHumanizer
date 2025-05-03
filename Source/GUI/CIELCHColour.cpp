@@ -31,6 +31,7 @@ SOFTWARE.
 ==============================================================================
 */
 
+
 #include "CIELCHColour.h"
 
 CIELCHColour::CIELCHColour() noexcept
@@ -342,9 +343,9 @@ void CIELCHColour::CIELabtoCIELCH(float L, float a, float b, float& Lout, float&
     H = std::atan2(b, a);
 
     if (H > 0)
-        H = (H / float_Pi) * 180.0f;
+        H = (H / MathConstants<float>::pi) * 180.0f;
     else
-        H = 360.0f - (std::abs(H) / float_Pi) * 180.0f;
+        H = 360.0f - (std::abs(H) / MathConstants<float>::pi) * 180.0f;
 
     Lout = L;
     C = std::sqrt(a*a + b*b);
@@ -354,8 +355,8 @@ void CIELCHColour::CIELabtoCIELCH(float L, float a, float b, float& Lout, float&
 void CIELCHColour::CIELCHtoCIELab(float L, float C, float H, float& Lout, float& a, float& b) noexcept
 {
     Lout = L;
-    a = std::cos(H * float_Pi / 180.0f) * C;
-    b = std::sin(H * float_Pi / 180.0f) * C;
+    a = std::cos(H * MathConstants<float>::pi / 180.0f) * C;
+    b = std::sin(H * MathConstants<float>::pi / 180.0f) * C;
 }
 
 void CIELCHColour::CIELCHtoRGB(float L, float C, float H, CIELCHColour& c, bool& imaginary) noexcept

@@ -31,6 +31,12 @@ SOFTWARE.
 ==============================================================================
 */
 
+#ifndef CIELCHColour_H_INCLUDED
+#define CIELCHColour_H_INCLUDED
+
+#include "../JuceLibraryCode/JuceHeader.h"
+#include <memory.h>
+
 //==============================================================================
 /**
 This class extends the JUCE Colour class by adding support for the CIE LCH perceptual colour space. 
@@ -66,13 +72,6 @@ CIELCHColour newColour2 = Colours::yellow;
 @endcode
 
 */
-
-#ifndef CIELCHColour_H_INCLUDED
-#define CIELCHColour_H_INCLUDED
-
-#include "JuceHeader.h"
-#include <memory.h>
-
 class CIELCHColour
 {
 public:

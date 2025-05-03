@@ -177,7 +177,8 @@ bool MidiSequence::ProjectFileLoader::loadProjectFile()
     const ZipFile::ZipEntry* zipXml = zipFile->getEntry("TrackData.xml");
 
     midiInputStream = std::unique_ptr<InputStream>(zipFile->createStreamForEntry(*zipMidi));
-    ScopedPointer<InputStream> xmlStream = zipFile->createStreamForEntry(*zipXml);
+    std::unique_ptr<InputStream> xmlStream;
+    xmlStream = std::unique_ptr<InputStream>(zipFile->createStreamForEntry(*zipXml));
 
     if (midiInputStream == nullptr || xmlStream == nullptr)
         return false;

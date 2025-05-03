@@ -257,8 +257,6 @@ void AppLookAndFeel::drawTabButton(TabBarButton& button, Graphics& g, bool isMou
 
     g.fillRect(activeArea);
 
-    Rectangle<int> r(activeArea);
-
     const float alpha = button.isEnabled() ? ((isMouseOver || isMouseDown) ? 1.0f : 0.8f) : 0.3f;
 
     Colour col(bkg.contrasting().withMultipliedAlpha(alpha));
@@ -289,8 +287,8 @@ void AppLookAndFeel::drawTabButton(TabBarButton& button, Graphics& g, bool isMou
 
     switch (o)
     {
-    case TabbedButtonBar::TabsAtLeft:   t = t.rotated(float_Pi * -0.5f).translated(area.getX(), area.getBottom()); break;
-    case TabbedButtonBar::TabsAtRight:  t = t.rotated(float_Pi *  0.5f).translated(area.getRight(), area.getY()); break;
+        case TabbedButtonBar::TabsAtLeft:   t = t.rotated(MathConstants<float>::pi * -0.5f).translated(area.getX(), area.getBottom()); break;
+    case TabbedButtonBar::TabsAtRight:  t = t.rotated(MathConstants<float>::pi *  0.5f).translated(area.getRight(), area.getY()); break;
     case TabbedButtonBar::TabsAtTop:
     case TabbedButtonBar::TabsAtBottom: t = t.translated(area.getX(), area.getY()); break;
     default:                            jassertfalse; break;
@@ -335,9 +333,6 @@ void AppLookAndFeel::drawComboBox(Graphics& g, int width, int height, bool /*isB
         g.setColour(GuiHelpers::makeBrighter(box.findColour(ComboBox::backgroundColourId)));
 
     g.fillRoundedRectangle(0.0f, 0.0f, (float)width, (float)height, (float)height / 12.5f);
-
-
-    const Colour buttonColour(box.findColour(ComboBox::buttonColourId));
 
     Path p;
 
