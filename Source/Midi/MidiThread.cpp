@@ -37,7 +37,8 @@ MidiThread::MidiThread(MidiHelpers& midiHelperIn)
 
 {
     //highest possible priority
-    setPriority(10);
+    //TODO: Fix set priority, which no longer exists in latest JUCE
+    //setPriority(10);
     midiCollector.reset(sampleRate);
     //appData.keyboardState.addListener(&midiCollector);
     midiHelper.setMidiPlayer(&midiPlayer);

@@ -217,7 +217,9 @@ void ExtendedMidiMessageSequence::enable()
 
 MidiOutput* ExtendedMidiMessageSequence::getMidiOut()
 {
-    return midiOut;
+    //TODO: fixme: this is a bit dangerous, returning a raw ptr from a unique_ptr.
+    //Better would be to change this to shared_ptr?
+    return midiOut.get();
 }
 
 void ExtendedMidiMessageSequence::setMidiOut(const String& name)

@@ -53,7 +53,7 @@ void GuiHelpers::creatDrawableButtonFromPath(Path& path, const String&, Drawable
 
 // This is a little utility to create a button with one of the SVG images in
 // our embedded ZIP file "icons.zip"
-Drawable* GuiHelpers::createDrawableFromZipFileSVG(const String& filename)
+std::unique_ptr<Drawable> GuiHelpers::createDrawableFromZipFileSVG(const String& filename)
 {
     if (iconsFromZipFile.size() == 0)
     {
@@ -63,7 +63,7 @@ Drawable* GuiHelpers::createDrawableFromZipFileSVG(const String& filename)
 
         for (int i = 0; i < icons.getNumEntries(); ++i)
         {
-            ScopedPointer<InputStream> svgFileStream(icons.createStreamForEntry(i));
+            std::unique_ptr<InputStream> svgFileStream(icons.createStreamForEntry(i));
 
             if (svgFileStream != 0)
             {
@@ -73,8 +73,7 @@ Drawable* GuiHelpers::createDrawableFromZipFileSVG(const String& filename)
         }
     }
 
-    Drawable* image = iconsFromZipFile [iconNames.indexOf (filename)]->createCopy();
-    return image;
+    return iconsFromZipFile [iconNames.indexOf (filename)]->createCopy();
 }
 
 void GuiHelpers::creatDrawableButtonFromFileString(const String& fileName, const String&, DrawableButton& button)

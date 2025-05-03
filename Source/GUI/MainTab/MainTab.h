@@ -196,7 +196,7 @@ private:
     String currentProjectFileString;
     /** the midi input, which the application is working with
     */
-    ScopedPointer<MidiInput> midiInput;
+    std::unique_ptr<MidiInput> midiInput;
     /** Reset this component.
     */
     /** File string used by the loadProjectFunction. Must be globabl, because the function is split in two parts .

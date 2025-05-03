@@ -132,7 +132,7 @@ private:
     bool enabled;
     /** the Midi Output
     */
-    ScopedPointer<MidiOutput> midiOut;
+    std::unique_ptr<MidiOutput> midiOut;
     /** The name of the midi output.
     */
     String midiOutName;
