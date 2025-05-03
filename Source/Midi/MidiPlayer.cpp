@@ -315,7 +315,6 @@ Array<ExtendedMidiMessage>& MidiPlayer::removeDuplicates(Array<ExtendedMidiMessa
         marked[i] = false;
     }
 
-    int dbg_before = notes.size();
     for (int i = 0; i < notes.size(); i++)
     {
         int playingNote = notes[i].getNoteNumber();

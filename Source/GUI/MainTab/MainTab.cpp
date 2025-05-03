@@ -433,7 +433,7 @@ void MainTab::loadProjectPart2()
     ZipFile zipFile(file);
 
     const ZipFile::ZipEntry* zipXml = zipFile.getEntry("GeneralData.xml");
-    ScopedPointer<InputStream> xmlStream = zipFile.createStreamForEntry(*zipXml);
+    auto xmlStream = std::unique_ptr<InputStream>(zipFile.createStreamForEntry(*zipXml));
     if (xmlStream == nullptr)
     {
         juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::AlertIconType::WarningIcon, "Error", "Something went wrong while loading general data for project: " + fileString);
