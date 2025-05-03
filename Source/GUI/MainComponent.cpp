@@ -113,7 +113,7 @@ void MainComponent::showStartupDialogue()
 {
 
     DialogWindow::LaunchOptions launchStartupDialog;
-    launchStartupDialog.dialogTitle = String::empty;
+    launchStartupDialog.dialogTitle = "";
     launchStartupDialog.dialogBackgroundColour = Colour(AppData::componentBackgroundColour);
     bool pointerTakesOwnership = true;
     StartUpDialog* startupDlg = new StartUpDialog(mainTab, *this);

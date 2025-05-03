@@ -44,7 +44,7 @@ public:
     ~Player();
     /** Play notes, i.e. send them to the midi device. Keep track of trigger and notes for later use (note-off).
     */
-    void play(const Array<ExtendedMidiMessage>& notes, const MidiMessage& triggerEvent);
+    void play(Array<ExtendedMidiMessage>& notes, const MidiMessage& triggerEvent);
     /** Send/play the Midi CCs
     */
     void sendMidiCCs(Array<ExtendedMidiMessage>& midiCCs);

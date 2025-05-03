@@ -186,7 +186,7 @@ bool MidiSequence::ProjectFileLoader::loadProjectFile()
 
     XmlDocument xmlDoc(xmlStream->readEntireStreamAsString());
     String dbg_err = xmlDoc.getLastParseError();
-    ScopedPointer<XmlElement> xml = xmlDoc.getDocumentElement();
+    std::unique_ptr<XmlElement> xml = xmlDoc.getDocumentElement();
     dbg_err = xmlDoc.getLastParseError();
 
     //ScopedPointer<XmlElement> xml = XmlDocument::parse(xmlStream->readEntireStreamAsString());

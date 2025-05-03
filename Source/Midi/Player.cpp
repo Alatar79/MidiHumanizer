@@ -77,7 +77,7 @@ void Player::sendMidiCCs(Array<ExtendedMidiMessage>& midiCCs)
     }
 }
 
-void Player::play(const Array<ExtendedMidiMessage>& notes, const MidiMessage& triggerEvent)
+void Player::play(Array<ExtendedMidiMessage>& notes, const MidiMessage& triggerEvent)
 {
 
     if (addWithoutPlaying(notes, triggerEvent))

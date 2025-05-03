@@ -40,7 +40,7 @@ class PianoRollViewport : public Viewport
 {
 public:
 
-    PianoRollViewport(const String& name = String::empty);
+    PianoRollViewport(const String& name = "");
 
     void setViewedComponent(PianoRoll *newPianoRoll, bool deleteComponentWhenNoLongerNeeded = true);
 

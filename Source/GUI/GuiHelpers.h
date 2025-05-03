@@ -44,7 +44,7 @@ public:
 
     /** This is a little utility to create a drrawable with one of the SVG images in
         our embedded ZIP file "icons.zip". Filename is one of the files in the ZIP. */
-    static Drawable* createDrawableFromZipFileSVG(const String& filename);
+    static std::unique_ptr<Drawable> createDrawableFromZipFileSVG(const String& filename);
 
     /** Creates a drawable button from a file string and a text label. The file string is part of the icons.zip
         in the binary resources.

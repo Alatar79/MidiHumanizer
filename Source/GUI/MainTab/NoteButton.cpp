@@ -32,7 +32,7 @@ MS<<*/
 #include "../../GUI/GuiHelpers.h"
 
 NoteButton::NoteButton(const double startTime, const double duration, const int track, const int noteNumber_)
-    :Button(String::empty)
+    :Button("DummyName")
 {
     setOpaque(true);
 

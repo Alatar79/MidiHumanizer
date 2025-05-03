@@ -59,7 +59,7 @@ ExtendedProgressBar::ExtendedProgressBar(String text, double& progress, MainAppW
     progressBar->setOpaque(false);
 
     DialogWindow::LaunchOptions launch;
-    launch.dialogTitle = String::empty;
+    launch.dialogTitle = "";
     launch.dialogBackgroundColour = Colour(0xff151520);
     launch.content.set(progressBar, /*takeOwnhership*/ true);
     launch.componentToCentreAround = &newMainAppWindowRef;
@@ -124,14 +124,14 @@ void ExtendedTabbedComponent::currentTabChanged(int , const String &newCurrentTa
 #endif
         if (file.existsAsFile())
         {
-            if (!juce::Process::openDocument("file:" + file.getFullPathName(), juce::String::empty))
+            if (!juce::Process::openDocument("file:" + file.getFullPathName(), ""))
             {
-                juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon, "Error", "PDF Reader must be installed to show the help file.", juce::String::empty, nullptr);
+                juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon, "Error", "PDF Reader must be installed to show the help file.", "", nullptr);
             }
         }
         else
         {
-            juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon, "Error", "Help file 'Help.pdf' does not exist!\n" + file.getFullPathName(), juce::String::empty, nullptr);
+            juce::AlertWindow::showMessageBox(juce::AlertWindow::WarningIcon, "Error", "Help file 'Help.pdf' does not exist!\n" + file.getFullPathName(), "", nullptr);
         }
 
         setCurrentTabIndex(AppData::TabIndices::Home);
@@ -186,9 +186,6 @@ ExtendedMidiKeyboardComponent::ExtendedMidiKeyboardComponent(MidiKeyboardState& 
 {
     minAvaiableNote = 0;
     maxAvaiableNote = 127;
-
-    for (int i = 0; i<128; i++)
-        velocity[i] = 0;
 }
 
 void ExtendedMidiKeyboardComponent::setPlayingRange(int lowestNote, int highestNote)
@@ -198,12 +195,6 @@ void ExtendedMidiKeyboardComponent::setPlayingRange(int lowestNote, int highestN
 
     minAvaiableNote = lowestNote;
     maxAvaiableNote = highestNote;
-}
-
-void ExtendedMidiKeyboardComponent::handleNoteOn(MidiKeyboardState* source, int channel, int midiNoteNumber, float vel)
-{
-    this->velocity[midiNoteNumber] = vel;
-    MidiKeyboardComponent::handleNoteOn(source, channel, midiNoteNumber, vel);
 }
 
 void ExtendedMidiKeyboardComponent::drawWhiteNote(int midiNoteNumber,
@@ -271,7 +262,6 @@ void ExtendedMidiKeyboardComponent::drawWhiteNote(int midiNoteNumber,
             c = Colour(AppData::pianoKeyRedColour);
         else
             c= Colour(AppData::pianoKeyGreenColour);
-        c = c.withBrightness((velocity[midiNoteNumber])*0.5f+ sqrt(velocity[midiNoteNumber])*0.5f);
     }
     if (isOver && !isDown)  c = c.overlaidWith(findColour(mouseOverKeyOverlayColourId));
 

@@ -49,7 +49,7 @@ MainTab::MainTab(MidiHelpers& midiHelperIn, MainAppWindow& appWindowIn)
     reset();
     setOpaque(true);
 
-    currentProjectFileString = String::empty;
+    currentProjectFileString = "";
 
     // add the virtual midi keyboard component..
     midiKeyboard.setPlayingRange(0,59);
@@ -440,7 +440,7 @@ void MainTab::loadProjectPart2()
         return;
     }
     XmlDocument xmlDoc(xmlStream->readEntireStreamAsString());
-    ScopedPointer<XmlElement> xml = xmlDoc.getDocumentElement();
+    std::unique_ptr<XmlElement> xml = xmlDoc.getDocumentElement();
     if (xml == nullptr ||
         !xml->hasTagName("GENERAL_DATA"))
     {
@@ -493,7 +493,7 @@ bool MainTab::loadMidi()
 void MainTab::afterMidiLoad()
 {
 
-    setAppName(String::empty);
+    setAppName("");
     reset();
     pianoRollViewport.newFileLoaded();
     trackListComp->newFileLoaded();
@@ -546,7 +546,7 @@ void MainTab::setAppName(const String fullFilePath)
 
     String fileName;
     String modTime;
-    if (fullFilePath != String::empty)
+    if (fullFilePath != "")
     {
         fileName = File(fullFilePath).getFileName();
         modTime = File(fullFilePath).getLastModificationTime().toString(true, true, false, true);
@@ -589,7 +589,7 @@ void MainTab::checkMidiOutChannelAvailability()
 
     if (missingMidOuts.size() > 0)
     {
-        String missingMidiOutListString = String::empty;
+        String missingMidiOutListString = "";
         for (int i = 0; i < missingMidOuts.size(); i++)
         {
             missingMidiOutListString = missingMidiOutListString + missingMidOuts[i] + "\n";
@@ -603,7 +603,7 @@ void MainTab::checkMidiOutChannelAvailability()
 File MainTab::getSpecialLocation()
 {
     File currentFile;
-    if (currentProjectFileString != String::empty)
+    if (currentProjectFileString != "")
         return File(currentProjectFileString);
     else
 #if JUCE_WINDOWS
@@ -621,7 +621,7 @@ void MainTab::buttonClicked(Button* button)
         loadMidi();
     }
     else if (button == &savePrjAsButton ||
-        (button == &savePrjButton && currentProjectFileString == String::empty))
+        (button == &savePrjButton && currentProjectFileString == ""))
     {
         juce::FileChooser myChooser("Please select a file for saving your project...", getSpecialLocation(), "*.hpr");
         if (myChooser.browseForFileToSave(true))

@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="OmFQa0" name="MidiHumanizer" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.Alatar.Humanizer" includeBinaryInAppConfig="1"
-              jucerFormatVersion="1">
+              jucerFormatVersion="1" defines="JUCE_MODAL_LOOPS_PERMITTED=1">
   <EXPORTFORMATS>
     <VS2008 targetFolder="Builds/VisualStudio2008" libraryType="1">
       <CONFIGURATIONS>
@@ -45,7 +45,7 @@
         <MODULEPATH id="juce_audio_processors" path="../../juce"/>
         <MODULEPATH id="juce_audio_formats" path="../../juce"/>
         <MODULEPATH id="juce_audio_devices" path="../../juce"/>
-        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
