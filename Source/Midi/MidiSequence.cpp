@@ -458,30 +458,6 @@ double MidiSequence::getNextChordTime(const double startTime, const bool skipDis
     return nextChordTime;
 }
 
-
-double MidiSequence::getPreviousChordTime(double startTime)
-{
-
-    Array<juce::MidiMessageSequence::MidiEventHolder*> notes;
-    Array<double> maxChordTimes = getPreviousNoteOnTimes(startTime);
-
-    double previousChordTime = getStartTime() -1;
-    //now find the minimum/closest time for the next chord
-    for (int i = 0; i < tracks.size(); i++)
-    {
-        if (maxChordTimes[i] > previousChordTime)
-        {
-            previousChordTime = maxChordTimes[i];
-            //if the closest chord time matches the startTime, we cannot find a better time => break;
-            if (fabs(previousChordTime - startTime) < MidiHelpers::midiDoubleThreshold)
-                break;
-        }
-    }
-
-    return previousChordTime;
-
-}
-
 Array<ExtendedMidiMessage> MidiSequence::getNextChord(double startTime)
 {
     Array<ExtendedMidiMessage> notes;
@@ -518,46 +494,6 @@ Array<ExtendedMidiMessage> MidiSequence::getNextChord(double startTime)
 
     return notes;
 }
-
-
-Array<ExtendedMidiMessage> MidiSequence::getPreviousChord(double startTime)
-{
-    Array<ExtendedMidiMessage> notes;
-
-    //Array<double> minChordTimes = getNextNoteOnTimes(startTime);
-    double previousChordTime = getPreviousChordTime(startTime);
-
-    //only proceed, if we really found some events and thus got a nextChordTime
-    if (previousChordTime >= getStartTime())
-    {
-        //now find all notes
-        for (int i = 0; i < tracks.size(); i++)
-        {
-
-            //if the track is not enabled, skip it
-            if (!(tracks[i]->isEnabled()))
-                continue;
-
-            int evtIdx = tracks[i]->getPreviousIndexAtTimeBinarySearch(previousChordTime);
-
-            while ((evtIdx > 0) &&
-                (fabs(tracks[i]->getEventTime(evtIdx) - previousChordTime) < MidiHelpers::midiDoubleThreshold))
-            {
-                juce::MidiMessageSequence::MidiEventHolder* evt = tracks[i]->getEventPointer(evtIdx);
-                if (evt->message.isNoteOn())
-                {
-                    ExtendedMidiMessage extEvt(*evt, tracks[i]->getMidiOut(), tracks[i]->getMidiOutNamePtr(), tracks[i]->getMidiChannel(), i, evtIdx);
-                    notes.add(extEvt);
-                }
-                evtIdx--;
-            }
-
-        }
-    }
-
-    return notes;
-}
-
 
 void MidiSequence::getMidiCCsFromChord(const Array<ExtendedMidiMessage>& chordNotes, Array<ExtendedMidiMessage>& resultMidiCCs)
 {

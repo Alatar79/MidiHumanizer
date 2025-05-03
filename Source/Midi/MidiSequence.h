@@ -214,9 +214,7 @@ public:
     /** Find next note(s) at/after time atTime. 
     */
     Array<ExtendedMidiMessage> getNextChord(double startTime);
-    /** Find previous note(s) at/after time atTime.
-    */
-    Array<ExtendedMidiMessage> getPreviousChord(double startTime);
+
     /** Find out the time of the next note-on event in each track. Start searching from startTime.
         An array with a time for each track is returned. If the time is greater than the end-time of the
         midi sequence, no note-on event was found for that track (or the track is disabled).
@@ -232,9 +230,6 @@ public:
         Normally this function skips disabled tracks. But you can tell it not to do so. 
     */
     double getNextChordTime(const double startTime, const bool skipDisabledTracks = true);
-    /** Find time stamp of previous note(s) at/after time atTime.
-    */
-    double getPreviousChordTime(double startTime);
 
     /** Find all Midi CCs, which belong to the given Chord. Add them to resultMidiCCs.
     */
