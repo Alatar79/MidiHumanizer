@@ -54,7 +54,7 @@ ExtendedMidiMessageSequence::ExtendedMidiMessageSequence(const ExtendedMidiMessa
     : MidiMessageSequence(other)
 {
     this->enabled = other.enabled;
-    //cannot copy midiOut, because it is a scoped pointer!
+    //cannot copy midiOut, because it is a unique pointer!
     this->resetMidi();
 }
 
@@ -71,7 +71,7 @@ ExtendedMidiMessageSequence& ExtendedMidiMessageSequence::operator= (const Exten
 {
     MidiMessageSequence::operator=(other);
     this->enabled = other.enabled;
-    //cannot copy midiOut, because it is a scoped pointer!
+    //cannot copy midiOut, because it is a unique pointer!
     this->resetMidi();
     return *this;
 }
@@ -228,10 +228,19 @@ void ExtendedMidiMessageSequence::setMidiOut(const String& name)
     //Reason: user might just have forgotten to turn on his midi device.
     //and we do not want to delete the information, in case user re-saves. 
     midiOutName = name;
-    StringArray midiDevices = juce::MidiOutput::getDevices();
-    int index = midiDevices.indexOf(name);
+    Array<MidiDeviceInfo> midiDevices = juce::MidiOutput::getAvailableDevices();
+    int index = -1;
+    for (int i = 0; i < midiDevices.size(); ++i)
+    {
+        if (midiDevices[i].name == name)
+        {
+            index = i;
+            break;
+        }
+            
+    }
     if (index != -1)
-        midiOut = juce::MidiOutput::openDevice(index);
+        midiOut = juce::MidiOutput::openDevice(midiDevices[index].identifier);
     else
         midiOut = nullptr;
 }
