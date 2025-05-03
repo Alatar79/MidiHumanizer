@@ -42,7 +42,9 @@ MidiHelpers::MidiHelpers()
    
     //workaround, because sometimes MidiOutput::getDevices() can fail, if you call it a second time.
     //therefore store the names here, after the first call.
-    midiInputs = juce::MidiOutput::getDevices();
+    Array<MidiDeviceInfo> devices = juce::MidiOutput::getAvailableDevices();
+    for (const MidiDeviceInfo& device : devices)
+        midiInputs.add(device.name);    
 }
 
 StringArray& MidiHelpers::getMidiInputs()

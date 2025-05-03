@@ -92,9 +92,9 @@ MainTab::MainTab(MidiHelpers& midiHelperIn, MainAppWindow& appWindowIn)
 
     midiInComboBox.addItem(AppData::noMidiSelected, -1);
     //midiInComboBox.addSeparator();
-    StringArray midiDevices = juce::MidiInput::getDevices();
+    Array<MidiDeviceInfo> midiDevices = juce::MidiInput::getAvailableDevices();
     for (int i = 0; i < midiDevices.size(); i++)
-        midiInComboBox.addItem(midiDevices[i], i+1);
+        midiInComboBox.addItem(midiDevices[i].name, i+1);
 
     midiInComboBox.setSelectedId(AppData::noMidiSelected, juce::NotificationType::dontSendNotification);
     midiInComboBox.addListener(this);

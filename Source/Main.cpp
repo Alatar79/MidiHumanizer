@@ -18,8 +18,6 @@ along with the Midi Humanizer.  If not, see <http://www.gnu.org/licenses/>.
 
 MS<<*/
 
-#define JUCE_MODAL_LOOPS_PERMITTED 0
-
 #include "JuceHeader.h"
 #include "MainWindow.h"
 #include "AppData.h"

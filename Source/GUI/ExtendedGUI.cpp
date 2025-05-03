@@ -555,7 +555,7 @@ void ExtendedMidiKeyboardComponent::drawUpDownButton(Graphics& g, int w, int h,
     Path path;
     path.addTriangle(0.0f, 0.0f, 0.0f, 1.25f, 1.0f, 0.625f);
     path = path.createPathWithRoundedCorners(0.275f);
-    path.applyTransform(AffineTransform::rotation(float_Pi * 2.0f * angle, 0.5f, 0.5f));
+    path.applyTransform(AffineTransform::rotation(MathConstants<float>::pi * 2.0f * angle, 0.5f, 0.5f));
 
     g.setColour(findColour(upDownButtonArrowColourId));
     if (buttonDown)
