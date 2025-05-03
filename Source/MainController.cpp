@@ -35,7 +35,8 @@ MainController::MainController(MainTab& mainTabIn, MidiHelpers& midiHelperIn) :
     midiHelper(midiHelperIn),
     midiThread(midiHelper)
 {
-    midiThread.startThread();
+    //TODO: should we make this a real-time thread?
+    midiThread.startThread(Thread::Priority::highest);
     //start GUI timer with 30ms intervall
     startTimer(30);
 }

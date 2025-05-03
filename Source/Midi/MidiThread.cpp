@@ -36,9 +36,6 @@ MidiThread::MidiThread(MidiHelpers& midiHelperIn)
       midiHelper(midiHelperIn)
 
 {
-    //highest possible priority
-    //TODO: Fix set priority, which no longer exists in latest JUCE
-    //setPriority(10);
     midiCollector.reset(sampleRate);
     //appData.keyboardState.addListener(&midiCollector);
     midiHelper.setMidiPlayer(&midiPlayer);
@@ -54,17 +51,17 @@ void MidiThread::run()
     do
     {
         double timeNow = Time::getMillisecondCounterHiRes();
-        double deltaTime = (timeNow - lastCallbackTime) * 0.001;
+        double deltaSeconds = (timeNow - lastCallbackTime) * 0.001;
         //make sure, we dont run this faster than once every millisecond. 
-        while (deltaTime < 0.001)
+        while (deltaSeconds < 0.001)
         {
             wait(1);
             timeNow = Time::getMillisecondCounterHiRes();
-            deltaTime = (timeNow - lastCallbackTime) * 0.001;
+            deltaSeconds = (timeNow - lastCallbackTime) * 0.001;
         }
         lastCallbackTime = timeNow;
 
-        int numSamples = (int)(deltaTime * sampleRate);
+        int numSamples = (int)(deltaSeconds * sampleRate);
         MidiBuffer incomingMidi;
         midiCollector.removeNextBlockOfMessages(incomingMidi, numSamples);
         //input the current midi buffer to the virtual keyboard and add events from it. 
