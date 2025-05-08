@@ -224,15 +224,19 @@ MidiOutput* ExtendedMidiMessageSequence::getMidiOut()
 
 void ExtendedMidiMessageSequence::setMidiOut(const String& name)
 {
+    setMidiOut(name, juce::MidiOutput::getAvailableDevices());
+}
+
+void ExtendedMidiMessageSequence::setMidiOut(const String& name, const Array<MidiDeviceInfo>& availableMidiDevices)
+{
     //Yes, always set the name, even if we cannot find it on the list of MidiOuts.
     //Reason: user might just have forgotten to turn on his midi device.
-    //and we do not want to delete the information, in case user re-saves. 
+    //and we do not want to delete the information, in case user re-saves.
     midiOutName = name;
-    Array<MidiDeviceInfo> midiDevices = juce::MidiOutput::getAvailableDevices();
     int index = -1;
-    for (int i = 0; i < midiDevices.size(); ++i)
+    for (int i = 0; i < availableMidiDevices.size(); ++i)
     {
-        if (midiDevices[i].name == name)
+        if (availableMidiDevices[i].name == name)
         {
             index = i;
             break;
@@ -240,11 +244,10 @@ void ExtendedMidiMessageSequence::setMidiOut(const String& name)
             
     }
     if (index != -1)
-        midiOut = juce::MidiOutput::openDevice(midiDevices[index].identifier);
+        midiOut = juce::MidiOutput::openDevice(availableMidiDevices[index].identifier);
     else
         midiOut = nullptr;
 }
-
 
 void ExtendedMidiMessageSequence::setMidiChannel(const int channel)
 {
