@@ -365,7 +365,7 @@ void MainTab::saveProject(const String& saveFileString)
     xml.setAttribute("ChordThreshold", chordThresholdTextField.getText().getDoubleValue());
     xml.setAttribute("ZoomFactor", pianoRollZoom.getZoomFactor());
     MemoryOutputStream xmlOutStream;
-    xml.writeToStream(xmlOutStream, "");
+    xml.writeTo(xmlOutStream);
     MemoryBlock xmlMemoryBlock = xmlOutStream.getMemoryBlock();
     zipBuilder.addEntry(new juce::MemoryInputStream(xmlMemoryBlock, false), 9, "GeneralData.xml", Time::getCurrentTime());
 
@@ -507,12 +507,12 @@ void MainTab::loadDefaultMidi()
     loadProgressBar = createProgressBar("Default Midi...");
 
     reset();
-    ScopedPointer<MemoryInputStream> memoryStream;
-    memoryStream = new MemoryInputStream(BinaryData::Bach_Prelude_1_in_C_mid,
+    std::unique_ptr<MemoryInputStream> memoryStream;
+    memoryStream = std::unique_ptr<MemoryInputStream>(new MemoryInputStream(BinaryData::Bach_Prelude_1_in_C_mid,
         BinaryData::Bach_Prelude_1_in_C_midSize,
-        false);
+        false));
 
-    midiHelper.getMidiPlayer()->loadMidiStream(memoryStream, *this);
+    midiHelper.getMidiPlayer()->loadMidiStream(memoryStream.get(), *this);
 }
 
 
@@ -565,19 +565,26 @@ void MainTab::setAppName(const String fullFilePath)
 void MainTab::checkMidiOutChannelAvailability()
 {
     StringArray missingMidOuts;
-
+    Array<MidiDeviceInfo> midiDevices = juce::MidiOutput::getAvailableDevices();
+    
     MidiSequence& midiData(midiHelper.getMidiPlayer()->getMidiSequence());
     for (int i = 0; i < midiData.getNoOfTracks(); i++)
     {
+
         String midiOutName = midiData.getMidiOutName(i);
-        StringArray midiDevices = juce::MidiOutput::getDevices();
         bool foundDevice = false;
-        for (int j = 0; j < midiDevices.size(); j++)
+        if (midiOutName == AppData::noMidiSelected)
+                foundDevice = true;
+        else
         {
-            if (midiOutName == AppData::noMidiSelected)
-                foundDevice = true;
-            else if (midiDevices.contains(midiOutName))
-                foundDevice = true;
+            for (const MidiDeviceInfo& midiDevice : midiDevices)
+            {
+                if (midiDevice.name == midiOutName)
+                {
+                    foundDevice = true;
+                    break;
+                }
+            }
         }
         if (!foundDevice)
         {
@@ -669,12 +676,16 @@ void MainTab::comboBoxChanged(ComboBox* comboBox)
 {
     if (comboBox == &midiInComboBox)
     {
-        StringArray midiDevices = MidiInput::getDevices();
-        if (midiDevices.indexOf(comboBox->getText()) != -1)
+        //StringArray midiDevices = MidiInput::getDevices();
+        Array<MidiDeviceInfo> availableMidiDevices = juce::MidiInput::getAvailableDevices();
+        StringArray midiDeviceNames;
+        for (const MidiDeviceInfo& midiDevice : availableMidiDevices)
+            midiDeviceNames.add(midiDevice.name);
+        if (midiDeviceNames.indexOf(comboBox->getText()) != -1)
         {
-            int index = midiDevices.indexOf(comboBox->getItemText(comboBox->getSelectedId()));
+            int index = midiDeviceNames.indexOf(comboBox->getItemText(comboBox->getSelectedId()));
             jassert(midiHelper.getMidiMessageCollector() != nullptr);
-            midiInput = MidiInput::openDevice(index, midiHelper.getMidiMessageCollector());
+            midiInput = MidiInput::openDevice(availableMidiDevices[index].identifier, midiHelper.getMidiMessageCollector());
             //if device is open in another application we cannot open it
             if (midiInput != nullptr)
                 midiInput->start();

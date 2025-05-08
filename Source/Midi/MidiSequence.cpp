@@ -160,6 +160,7 @@ MidiSequence::ProjectFileLoader::ProjectFileLoader(File& file, MidiSequence& des
     :MidiStreamLoader(nullptr, dest)
 {
     zipFile = std::unique_ptr<ZipFile>(new ZipFile(file));
+    availableMidiDevices = juce::MidiOutput::getAvailableDevices();
 }
 
 
@@ -189,8 +190,6 @@ bool MidiSequence::ProjectFileLoader::loadProjectFile()
     std::unique_ptr<XmlElement> xml = xmlDoc.getDocumentElement();
     dbg_err = xmlDoc.getLastParseError();
 
-    //ScopedPointer<XmlElement> xml = XmlDocument::parse(xmlStream->readEntireStreamAsString());
-
     if (xml == nullptr ||
         !xml->hasTagName("HUMANIZER_PROJECT"))
     {
@@ -210,7 +209,7 @@ bool MidiSequence::ProjectFileLoader::loadProjectFile()
             return false;
 
         attributeString = "Track_" + String(i) + "_MidiDevice";
-        destSequence.tracks[i]->setMidiOut(child->getStringAttribute(attributeString, AppData::noMidiSelected));
+        destSequence.tracks[i]->setMidiOut(child->getStringAttribute(attributeString, AppData::noMidiSelected), availableMidiDevices);
 
         attributeString = "Track_" + String(i) + "_MidiChannel";
         destSequence.tracks[i]->setMidiChannel(child->getIntAttribute(attributeString, 1));
@@ -311,8 +310,7 @@ bool MidiSequence::saveProjectFile(ZipFile::Builder& zip)
     }
 
     MemoryOutputStream xmlOutStream;
-    //xml.writeToStream(xmlOutStream, "<no DTD=\"0\">");
-    xml.writeToStream(xmlOutStream, "");
+    xml.writeTo(xmlOutStream);
 
     MemoryBlock midiMemoryBlock = midiOutStream.getMemoryBlock();
     MemoryBlock xmlMemoryBlock = xmlOutStream.getMemoryBlock();

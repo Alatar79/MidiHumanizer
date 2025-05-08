@@ -98,6 +98,10 @@ public:
         is figured out by the function.
     */
     void setMidiOut(const String& name);
+    /** Set the Midi Output, which we send the midi data to.
+        Additionally to the name, a list of available Midi has to be provided. Note that there is also a version above, where you do not need to provide the available devices. But that only works on the message thread on Mac. This second version is used to set the midi output from a worker thread.
+    */
+    void setMidiOut(const String& name, const Array<MidiDeviceInfo>& availableMidiDevices);
     /* Set the Midi channel.
     */
     void setMidiChannel(const int channel);
